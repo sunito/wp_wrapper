@@ -1,0 +1,37 @@
+## MAC OS
+.DS_Store
+
+## TEXTMATE
+*.tmproj
+tmtags
+
+## EMACS
+*~
+\#*
+.\#*
+
+## VIM
+*.swp
+
+## RUBYMINE
+.idea
+
+## PROJECT::GENERAL
+coverage
+rdoc
+pkg/*
+
+## BUNDLER
+*.gem
+.bundle
+doc
+log
+Gemfile.lock
+.rvmrc
+.rbenv*
+
+## PROJECT::SPECIFIC
+.rbx
+
+## PROJECT::SPECIFIC
+spec/wordpress.yml

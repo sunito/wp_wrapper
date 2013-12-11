@@ -1,0 +1,8 @@
+:admin: 
+  :url: http://domain.com
+  :username: UsernameToLoginWith
+  :password: PasswordToLoginWith
+:invalid: 
+  :url: http://domain.com
+  :username: foofoofoo
+  :password: foobar
