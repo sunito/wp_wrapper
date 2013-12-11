@@ -21,4 +21,3 @@ module WpWrapper
   
   require File.join(File.dirname(__FILE__), 'wp_wrapper/client')
 end
-
