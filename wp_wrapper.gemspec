@@ -17,12 +17,34 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'mocha'
+  
+  # = MANIFEST =
+  s.files = %w[
+  Gemfile
+  LICENSE.txt
+  README.markdown
+  Rakefile
+  lib/wp_wrapper.rb
+  lib/wp_wrapper/client.rb
+  lib/wp_wrapper/modules/api.rb
+  lib/wp_wrapper/modules/authorization.rb
+  lib/wp_wrapper/modules/options.rb
+  lib/wp_wrapper/modules/plugins.rb
+  lib/wp_wrapper/modules/plugins/akismet.rb
+  lib/wp_wrapper/modules/plugins/gocodes.rb
+  lib/wp_wrapper/modules/plugins/w3_total_cache.rb
+  lib/wp_wrapper/modules/plugins/wordpress_seo.rb
+  lib/wp_wrapper/modules/profiles.rb
+  lib/wp_wrapper/modules/setup.rb
+  lib/wp_wrapper/modules/themes.rb
+  lib/wp_wrapper/modules/upgrade.rb
+  lib/wp_wrapper/railtie.rb
+  spec/spec_helper.rb
+  spec/wordpress.yml.example
+  spec/wp_wrapper/authentication_spec.rb
+  wp_wrapper.gemspec
+  ]
+  # = MANIFEST =
 
   s.test_files = s.files.select { |path| path =~ %r{^spec/*/.+\.rb} }
 end
-
- # = MANIFEST =
- s.files = %w[
-
- ]
- # = MANIFEST =
