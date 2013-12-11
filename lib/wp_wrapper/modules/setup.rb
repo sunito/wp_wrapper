@@ -2,7 +2,7 @@ module WpWrapper
   module Modules
     module Setup
     
-      def setup(title, email)
+      def setup(title: nil, email: nil)
         success       =   false
         setup_page    =   self.mechanize_client.open_url(get_url(:home))
       
@@ -24,7 +24,7 @@ module WpWrapper
             success                                                   =   true
           else
             puts "#{Time.now}: Url: #{self.url}. The blog has already been setup or the registration form couldn't be found or some data is missing."
-            puts "#{Time.now}: Url: #{self.url}. Information supplied:\nTitle: #{title.inspect}.\nUsername: #{self.username.inspect}.\nPassword: #{self.password.inspect}.\nEmail: #{email.inspect}."
+            puts "#{Time.now}: Url: #{self.url}. Information supplied:\nTitle: #{title}.\nUsername: #{self.username}.\nPassword: #{self.password}.\nEmail: #{email}."
           end
         end
       
@@ -33,17 +33,17 @@ module WpWrapper
     
       def set_permalinks_options(options = {})
         permalink_structure       =     options.fetch(:permalink_structure, '/%postname%/')
-        category_base             =     options.fetch(:category_base, 'kategori')
-        tag_base                  =     options.fetch(:tag_base, 'etikett')
+        category_base             =     options.fetch(:category_base,       'kategori')
+        tag_base                  =     options.fetch(:tag_base,            'etikett')
       
-        opt = {
+        opts                      =     {
           :custom_selection       =>  {:identifier => :id,              :checked => true,         :type => :radiobutton},
           :permalink_structure    =>  {:value => permalink_structure,   :type => :input},
           :category_base          =>  {:value => category_base,         :type => :input},
           :tag_base               =>  {:value => tag_base,              :type => :input},
         }
       
-        return set_options_and_submit("options-permalink.php", {:action => 'options-permalink.php'}, options, :first, {:should_reset_radio_buttons => true})
+        return set_options_and_submit("options-permalink.php", {:action => 'options-permalink.php'}, opts, :first, {:should_reset_radio_buttons => true})
       end
 
     end

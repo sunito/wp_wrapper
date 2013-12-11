@@ -52,7 +52,7 @@ module WpWrapper
           profile_page    =   self.mechanize_client.open_url(get_url(:profile))
 
           if (profile_page)
-            profile_form  =   profile_page.form_with(:action => "#{self.site.url}/wp-admin/profile.php")
+            profile_form  =   profile_page.form_with(:action => "#{self.url}/wp-admin/profile.php")
             profile_form.field_with(:name => 'pass1').value   =   new_password
             profile_form.field_with(:name => 'pass2').value   =   new_password
           

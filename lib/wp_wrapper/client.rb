@@ -8,11 +8,10 @@ module WpWrapper
       options.symbolize_keys! if options.respond_to?(:symbolize_keys!)
       
       self.url                =   options.fetch(:url, nil)
-      self.url                =   "#{self.url}/" if (!self.url.ends_with?("/"))
+      self.url                =   "#{self.url}/" unless self.url.nil? || self.url =~ /\/$/i
       
       self.username           =   options.fetch(:username, nil)
       self.password           =   options.fetch(:password, nil)
-      self.environment        =   options.fetch(:environment, :production).to_sym
       self.logged_in          =   false
       
       self.http_client        =   HttpUtilities::Http::Client.new
@@ -58,8 +57,6 @@ module WpWrapper
       
       form_page_url   =   "#{get_url(:admin)}/#{url}"
       response        =   self.mechanize_client.set_form_and_submit(form_page_url, form_identifier, submit_identifier, fields, options)
-      
-      #puts "Response: #{response.inspect}"
     end
 
   end

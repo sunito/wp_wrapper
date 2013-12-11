@@ -25,7 +25,8 @@ RSpec.configure do |config|
 end
 
 def load_config
-  config = YAML.load_file((File.exists?('./wordpress.yml')) ? './wordpress.yml' : './wordpress.yml.example')
+  config_path   =   File.exists?(File.expand_path('../wordpress.yml', __FILE__)) ? File.expand_path('../wordpress.yml', __FILE__) : File.expand_path('../wordpress.yml.example', __FILE__)
+  config        =   YAML.load_file(config_path)
   config.symbolize_keys! if config.respond_to?(:symbolize_keys!)
   
   return config

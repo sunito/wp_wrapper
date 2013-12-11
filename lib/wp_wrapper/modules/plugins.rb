@@ -1,10 +1,10 @@
 module WpWrapper
   module Modules
     module Plugins
-      include WpWrapper::Modules::Plugins::Akismet
-      include WpWrapper::Modules::Plugins::Gocodes
-      include WpWrapper::Modules::Plugins::W3TotalCache
-      include WpWrapper::Modules::Plugins::WordpressSeo
+      include ::WpWrapper::Modules::Plugins::Akismet
+      include ::WpWrapper::Modules::Plugins::Gocodes
+      include ::WpWrapper::Modules::Plugins::W3TotalCache
+      include ::WpWrapper::Modules::Plugins::WordpressSeo
       
       def manage_plugins(plugin_identifiers, action = :activate)
         plugin_identifiers        =   (plugin_identifiers.is_a?(Array)) ? plugin_identifiers : [plugin_identifiers.to_s]
