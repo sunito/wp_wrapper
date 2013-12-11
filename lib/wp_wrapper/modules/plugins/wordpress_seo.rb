@@ -57,6 +57,51 @@ module WpWrapper
             form.submit
           end
         end
+        
+        def configure_wordpress_seo_sitemaps(not_included_post_types: [], not_included_taxonomies: [], disable_author_sitemap: true)
+          login unless logged_in?
+
+          url       =   "#{get_url(:admin)}/admin.php?page=wpseo_xml"
+          page      =   self.mechanize_client.get_page(url)
+          form      =   self.mechanize_client.get_form(page, {:action => /wp-admin\/options\.php/i})
+          
+          options   =   {
+            "wpseo_xml[enablexmlsitemap]"                             =>  {:type   =>  :checkbox,   :checked    =>  true}
+          }
+          
+          if (disable_author_sitemap)
+            options["wpseo_xml[disable_author_sitemap]"]              =   {:type   =>  :checkbox,   :checked    =>  true}
+          end
+          
+          not_included_post_types.each do |post_type|
+            post_type_options = {
+              "wpseo_xml[post_types-#{post_type}-not_in_sitemap]"     =>  {:type   =>  :checkbox,   :checked    =>  true}
+            }
+          
+            options.merge!(post_type_options)
+          end
+          
+          not_included_taxonomies.each do |taxonomy|
+            taxonomy_options = {
+              "wpseo_xml[taxonomies-#{taxonomy}-not_in_sitemap]"      =>  {:type   =>  :checkbox,   :checked    =>  true}
+            }
+            
+            options.merge!(taxonomy_options)
+          end
+          
+          if (form)            
+            options.each do |key, values|
+              case values[:type]
+                when :input
+                  form[key] = values[:value] if (form.has_field?(key))
+                when :checkbox
+                  form.checkbox_with(name: key).check rescue nil if values[:checked]
+              end
+            end
+          
+            form.submit
+          end
+        end
       
         #Retarded method for now, look into I18n later
         def translate_pattern(key, language = :en)
