@@ -12,7 +12,7 @@ module WpWrapper
           
           if (themes_page)
             available_theme_links   =   themes_page.parser.css("div#availablethemes div.available-theme a.activatelink")
-            regex                   =   Regexp.new("stylesheet=#{theme_identifier}", Regexp::Regexp::IGNORECASE)
+            regex                   =   Regexp.new("stylesheet=#{theme_identifier}", Regexp::IGNORECASE)
         
             available_theme_links.each do |link|
               href = link["href"]

@@ -23,7 +23,7 @@ module WpWrapper
 
           if (plugins_page)
             plugin_links          =   plugins_page.parser.css("table.plugins tbody tr td span.#{action} a")
-            regex                 =   Regexp.new("plugin=#{plugin_identifier}", Regexp::Regexp::IGNORECASE)
+            regex                 =   Regexp.new("plugin=#{plugin_identifier}", Regexp::IGNORECASE)
         
             plugin_links.each do |link|
               href                =   link["href"]
