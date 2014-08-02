@@ -3,7 +3,7 @@ module WpWrapper
     module Plugins
       module W3TotalCache
       
-        def configure_w3_total_cache(caching_mechanism = :apc, options = {})
+        def configure_w3_total_cache(caching_mechanism = :memcached, options = {})
           configure_general_settings(caching_mechanism, options)
           configure_page_cache
           configure_minification
