@@ -16,7 +16,7 @@ module WpWrapper
           cache_sections            =   [:pg, :db, :object]
         
           url                       =   "admin.php?page=w3tc_general"
-          form_identifier           =   {:action => /admin\.php\?page=w3tc_general/i, :index => 0}
+          form_identifier           =   {:id => 'w3tc_form'}
           button_identifier         =   {:name => 'w3tc_save_options'}
         
           varnish_server            =   options.fetch(:varnish_server, "localhost")
