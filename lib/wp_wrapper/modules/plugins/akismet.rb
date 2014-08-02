@@ -4,11 +4,11 @@ module WpWrapper
       module Akismet
       
         def configure_akismet(api_key)
-          options   =   {
+          options     =   {
             :key                      =>  {:value     =>  api_key,  :type   =>  :input}
           }
         
-          return set_options_and_submit("options-general.php?page=akismet-key-config", {:id => 'akismet-conf'}, options)
+          response    =   set_options_and_submit("options-general.php?page=akismet-key-config", {:id => 'akismet-enter-api-key'}, options)
         end
       
       end
