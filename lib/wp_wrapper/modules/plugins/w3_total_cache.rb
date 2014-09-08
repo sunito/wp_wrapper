@@ -60,7 +60,7 @@ module WpWrapper
           button_identifier         =   {:name => 'w3tc_save_options'}
         
           options                   =   {
-            "pgcache.cache.feed"            =>    {:checked   =>  true,               :type   =>  :checkbox},
+            "pgcache.cache.feed"            =>    {:checked   =>  true,                 :type   =>  :checkbox},
           }
         
           return set_options_and_submit(url, form_identifier, options, button_identifier)
@@ -72,9 +72,10 @@ module WpWrapper
           button_identifier         =   {:name => 'w3tc_save_options'}
         
           options                   =   {
-            "minify.html.enable"            =>    {:checked   =>  true,               :type   =>  :checkbox},
-            "minify.html.inline.css"        =>    {:checked   =>  true,               :type   =>  :checkbox},
-            "minify.html.inline.js"         =>    {:checked   =>  true,               :type   =>  :checkbox},
+            "minify.html.enable"                          =>    {:checked   =>  true,   :type   =>  :checkbox},
+            "minify.html.inline.css"                      =>    {:checked   =>  true,   :type   =>  :checkbox},
+            "minify.html.inline.js"                       =>    {:checked   =>  true,   :type   =>  :checkbox},
+            "minify.auto.disable_filename_length_test"    =>    {:checked   =>  true,   :type   =>  :checkbox},
           }
         
           return set_options_and_submit(url, form_identifier, options, button_identifier)
