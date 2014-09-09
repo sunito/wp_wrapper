@@ -108,9 +108,9 @@ module WpWrapper
         def activate_configuration
           url         =   "#{get_url(:admin)}admin.php?page=w3tc_general"
           page        =   self.mechanize_client.get_page(url)
-          parser      =   self.mechanize_client.get_parser(page)
-        
-          input       =   parser.at_css('input[value = "deploy"]')
+          
+          parser      =   page      ?   self.mechanize_client.get_parser(page)      :   nil
+          input       =   parser    ?   parser.at_css('input[value = "deploy"]')    :   nil
         
           if (input)
             on_click  =   input["onclick"]
